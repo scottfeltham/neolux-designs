@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeoLux Health — Brand & Design Guide</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=JetBrains+Mono:wght@400;500&family=Outfit:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* PRIMARY — Warm Neutrals */
+      --marble-white: #f8f7f4;
+      --marble-warm: #f5f3ef;
+      --parchment: #eeecea;
+
+      /* ANCHOR — Deep Sophistication */
+      --ink: #0a0a0a;
+      --charcoal: #1a1a1a;
+      --graphite: #2d2d2d;
+
+      /* ACCENT — Muted Gold */
+      --gold: #b8a067;
+      --gold-muted: #a69155;
+      --gold-pale: #d4c9a8;
+
+      /* SCIENTIFIC — Data Accent */
+      --precision-blue: #4a5568;
+
+      /* FUNCTIONAL */
+      --text-primary: #1a1a1a;
+      --text-secondary: #6b7280;
+      --text-muted: #9ca3af;
+
+      /* EFFECTS */
+      --glass-bg: rgba(255, 255, 255, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.4);
+      --glass-shadow: rgba(0, 0, 0, 0.08);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Outfit', system-ui, sans-serif;
+      background: var(--marble-white);
+      color: var(--charcoal);
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Typography */
+    .font-display {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .container-narrow {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(248, 247, 244, 0.9);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--parchment);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1rem 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      text-decoration: none;
+      color: var(--ink);
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .nav {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav a {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav a:hover {
+      color: var(--gold);
+    }
+
+    /* Hero */
+    .hero {
+      padding: 10rem 0 6rem;
+      text-align: center;
+      background: linear-gradient(180deg, var(--marble-white) 0%, var(--marble-warm) 100%);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(184, 160, 103, 0.1);
+      border: 1px solid rgba(184, 160, 103, 0.2);
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* Sections */
+    .section {
+      padding: 5rem 0;
+    }
+
+    .section-dark {
+      background: var(--ink);
+      color: white;
+    }
+
+    .section-warm {
+      background: var(--marble-warm);
+    }
+
+    .section-header {
+      margin-bottom: 3rem;
+    }
+
+    .section-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 2.5rem);
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      color: var(--text-secondary);
+      font-size: 1rem;
+      max-width: 600px;
+    }
+
+    .section-dark .section-subtitle {
+      color: var(--text-muted);
+    }
+
+    /* Color Swatches */
+    .color-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .color-group {
+      margin-bottom: 3rem;
+    }
+
+    .color-group-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 1rem;
+    }
+
+    .color-swatch {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+
+    .color-preview {
+      height: 120px;
+      position: relative;
+    }
+
+    .color-info {
+      padding: 1rem;
+    }
+
+    .color-name {
+      font-weight: 500;
+      margin-bottom: 0.25rem;
+    }
+
+    .color-hex {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .color-usage {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    /* Typography Showcase */
+    .type-specimen {
+      margin-bottom: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid var(--parchment);
+    }
+
+    .type-specimen:last-child {
+      border-bottom: none;
+    }
+
+    .type-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .type-sample-display {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+
+    .type-sample-body {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1rem;
+      font-weight: 300;
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
+    .type-sample-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .type-meta {
+      display: flex;
+      gap: 2rem;
+      margin-top: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    .type-meta-item {
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+    }
+
+    .type-meta-item strong {
+      color: var(--text-primary);
+      font-weight: 500;
+    }
+
+    /* Scale Demo */
+    .scale-demo {
+      margin: 2rem 0;
+    }
+
+    .scale-item {
+      display: flex;
+      align-items: baseline;
+      gap: 2rem;
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--parchment);
+    }
+
+    .scale-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      width: 100px;
+      flex-shrink: 0;
+    }
+
+    .scale-hero { font-size: clamp(3rem, 9vw, 5rem); }
+    .scale-h1 { font-size: clamp(2.5rem, 5vw, 3.5rem); }
+    .scale-h2 { font-size: clamp(2rem, 4vw, 2.5rem); }
+    .scale-h3 { font-size: clamp(1.5rem, 3vw, 1.75rem); }
+    .scale-large { font-size: 1.125rem; }
+    .scale-base { font-size: 1rem; }
+    .scale-small { font-size: 0.875rem; }
+
+    /* Voice & Tone */
+    .voice-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .voice-card {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .voice-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .voice-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Do/Don't */
+    .do-dont-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .do-column, .dont-column {
+      padding: 2rem;
+      border-radius: 16px;
+    }
+
+    .do-column {
+      background: rgba(184, 160, 103, 0.08);
+      border: 1px solid rgba(184, 160, 103, 0.2);
+    }
+
+    .dont-column {
+      background: rgba(239, 68, 68, 0.05);
+      border: 1px solid rgba(239, 68, 68, 0.15);
+    }
+
+    .do-column h4, .dont-column h4 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+
+    .do-column h4 {
+      color: var(--gold);
+    }
+
+    .dont-column h4 {
+      color: #ef4444;
+    }
+
+    .do-column ul, .dont-column ul {
+      list-style: none;
+    }
+
+    .do-column li, .dont-column li {
+      padding: 0.5rem 0;
+      padding-left: 1.5rem;
+      position: relative;
+      font-size: 0.9rem;
+    }
+
+    .do-column li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .dont-column li::before {
+      content: '✕';
+      position: absolute;
+      left: 0;
+      color: #ef4444;
+    }
+
+    /* Components */
+    .component-demo {
+      background: var(--marble-warm);
+      border-radius: 16px;
+      padding: 3rem;
+      margin: 2rem 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.875rem 2rem;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 400;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background: var(--gold);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: var(--gold-muted);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 1px solid var(--charcoal);
+      color: var(--charcoal);
+    }
+
+    .btn-secondary:hover {
+      background: var(--charcoal);
+      color: white;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--charcoal);
+    }
+
+    .btn-ghost:hover {
+      color: var(--gold);
+    }
+
+    .buttons-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+
+    /* Glass Card */
+    .glass-demo {
+      background: linear-gradient(135deg, var(--gold-pale) 0%, var(--marble-warm) 100%);
+      padding: 4rem;
+      border-radius: 16px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+      border-radius: 16px;
+      padding: 2rem;
+      max-width: 400px;
+    }
+
+    .glass-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .glass-card p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Badge */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 100px;
+    }
+
+    .badge-gold {
+      background: rgba(184, 160, 103, 0.1);
+      border: 1px solid rgba(184, 160, 103, 0.2);
+      color: var(--gold);
+    }
+
+    .badge-dark {
+      background: var(--ink);
+      color: white;
+    }
+
+    /* Credential */
+    .credential {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      padding: 0.25rem 0.75rem;
+      background: var(--parchment);
+      border-radius: 4px;
+      display: inline-block;
+      margin: 0.25rem;
+    }
+
+    /* Stat */
+    .stat-demo {
+      display: flex;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-value {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 3rem;
+      font-weight: 400;
+      color: var(--ink);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+    }
+
+    /* Code Block */
+    .code-block {
+      background: var(--ink);
+      border-radius: 12px;
+      padding: 1.5rem;
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    .code-block code {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: #e5e7eb;
+      line-height: 1.6;
+    }
+
+    .code-block .comment {
+      color: #6b7280;
+    }
+
+    .code-block .property {
+      color: #93c5fd;
+    }
+
+    .code-block .value {
+      color: #fcd34d;
+    }
+
+    /* Positioning Spectrum */
+    .spectrum {
+      background: var(--marble-warm);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .spectrum-bar {
+      height: 4px;
+      background: linear-gradient(90deg, var(--precision-blue) 0%, var(--gold) 50%, #d4a5a5 100%);
+      border-radius: 2px;
+      position: relative;
+      margin: 3rem 0 2rem;
+    }
+
+    .spectrum-marker {
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 20px;
+      height: 20px;
+      background: var(--gold);
+      border: 3px solid white;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+    }
+
+    .spectrum-labels {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+    }
+
+    .spectrum-center {
+      text-align: center;
+      margin-top: 1rem;
+    }
+
+    .spectrum-center strong {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      color: var(--gold);
+    }
+
+    /* Table */
+    .table-wrapper {
+      overflow-x: auto;
+      margin: 1.5rem 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+
+    th {
+      text-align: left;
+      padding: 1rem;
+      background: var(--parchment);
+      font-weight: 500;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    td {
+      padding: 1rem;
+      border-bottom: 1px solid var(--parchment);
+    }
+
+    /* Motion Section */
+    .motion-demo {
+      background: var(--marble-warm);
+      border-radius: 16px;
+      padding: 3rem;
+      text-align: center;
+    }
+
+    .motion-box {
+      width: 100px;
+      height: 100px;
+      background: var(--gold);
+      border-radius: 12px;
+      margin: 2rem auto;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* Image Examples */
+    .image-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .image-example {
+      border-radius: 12px;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+
+    .image-example img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-caption {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      text-align: center;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--ink);
+      color: white;
+      padding: 4rem 0 2rem;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+    }
+
+    .footer-logo span {
+      color: var(--gold);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .footer-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.875rem;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+    }
+
+    .footer-bottom {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* TOC */
+    .toc {
+      background: var(--marble-warm);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2rem 0;
+    }
+
+    .toc h3 {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc;
+    }
+
+    .toc li {
+      counter-increment: toc;
+      padding: 0.5rem 0;
+    }
+
+    .toc a {
+      color: var(--text-secondary);
+      text-decoration: none;
+      display: flex;
+      gap: 1rem;
+      transition: color 0.3s;
+    }
+
+    .toc a:hover {
+      color: var(--gold);
+    }
+
+    .toc a::before {
+      content: counter(toc, decimal-leading-zero);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--gold);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav {
+        display: none;
+      }
+
+      .header-inner {
+        justify-content: center;
+      }
+
+      .spectrum-labels {
+        font-size: 0.65rem;
+      }
+
+      .stat-demo {
+        justify-content: center;
+      }
+    }
+
+    /* Quote */
+    blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      border-left: 3px solid var(--gold);
+      padding-left: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    /* Divider */
+    .gold-rule {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 4rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="header-inner">
+      <a href="index.html" class="logo">NeoLux<span>Health</span></a>
+      <nav class="nav">
+        <a href="#overview">Overview</a>
+        <a href="#colors">Colors</a>
+        <a href="#typography">Typography</a>
+        <a href="#voice">Voice</a>
+        <a href="#components">Components</a>
+        <a href="#motion">Motion</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">Brand Guidelines v1.0</div>
+      <h1>Brand & Design Guide</h1>
+      <p>A comprehensive guide to the NeoLux Health visual identity, voice, and design system. Precision Luxe — where scientific credibility meets understated elegance.</p>
+    </div>
+  </section>
+
+  <!-- Table of Contents -->
+  <section class="section">
+    <div class="container-narrow">
+      <div class="toc">
+        <h3>Contents</h3>
+        <ol>
+          <li><a href="#overview">Brand Overview</a></li>
+          <li><a href="#positioning">Strategic Positioning</a></li>
+          <li><a href="#colors">Color System</a></li>
+          <li><a href="#typography">Typography</a></li>
+          <li><a href="#voice">Voice & Tone</a></li>
+          <li><a href="#imagery">Imagery Guidelines</a></li>
+          <li><a href="#components">UI Components</a></li>
+          <li><a href="#motion">Motion & Animation</a></li>
+          <li><a href="#technical">Technical Specifications</a></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Overview -->
+  <section id="overview" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-number">01</div>
+        <h2 class="section-title">Brand Overview</h2>
+        <p class="section-subtitle">NeoLux Health delivers precision longevity medicine for executives in Dubai and London.</p>
+      </div>
+
+      <div class="voice-grid">
+        <div class="voice-card">
+          <h3>Client</h3>
+          <p>Dr. Shabeena Aziz — Family Medicine Consultant & Longevity Physician with MSc in Sports & Exercise Medicine.</p>
+        </div>
+        <div class="voice-card">
+          <h3>Locations</h3>
+          <p>Dubai, UAE & London, UK — serving global executives who require flexibility.</p>
+        </div>
+        <div class="voice-card">
+          <h3>Category</h3>
+          <p>Precision Longevity Medicine — evidence-based healthspan optimization for high performers.</p>
+        </div>
+        <div class="voice-card">
+          <h3>Audience</h3>
+          <p>C-suite executives (40-65, $500K+) seeking measurable health outcomes, not wellness trends.</p>
+        </div>
+      </div>
+
+      <blockquote>
+        "Design a website that communicates scientific credibility and understated luxury—positioning Dr. Aziz as the trusted physician for executives who want evidence-based longevity protocols, not wellness trends."
+      </blockquote>
+    </div>
+  </section>
+
+  <div class="gold-rule"></div>
+
+  <!-- Positioning -->
+  <section id="positioning" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-number">02</div>
+        <h2 class="section-title">Strategic Positioning</h2>
+        <p class="section-subtitle">NeoLux occupies the space between cold clinical and soft wellness — Scientific Luxury.</p>
+      </div>
+
+      <div class="spectrum">
+        <div class="spectrum-bar">
+          <div class="spectrum-marker"></div>
+        </div>
+        <div class="spectrum-labels">
+          <span>CLINICAL<br><small>Cold, Sterile</small></span>
+          <span>WELLNESS SPA<br><small>Soft, Vague</small></span>
+        </div>
+        <div class="spectrum-center">
+          <strong>Scientific Luxury</strong>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 0.5rem;">Warm materiality meets precision medicine</p>
+        </div>
+      </div>
+
+      <h3 class="font-display" style="font-size: 1.5rem; margin: 3rem 0 1.5rem;">Core USP</h3>
+      <p style="font-size: 1.25rem; color: var(--gold); font-weight: 400; margin-bottom: 2rem;">"Evidence-based longevity protocols. Not wellness trends — measurable outcomes."</p>
+
+      <div class="do-dont-grid">
+        <div class="do-column">
+          <h4>Key Differentiators</h4>
+          <ul>
+            <li>Dr. Aziz's credentials — qualified physician, not a wellness coach</li>
+            <li>Sports medicine background — performance optimization angle</li>
+            <li>Dual practice — flexibility for global executives</li>
+            <li>Evidence-based — protocols, not programs</li>
+            <li>Personalized — direct physician relationship</li>
+          </ul>
+        </div>
+        <div class="dont-column">
+          <h4>Competitor Approaches to Avoid</h4>
+          <ul>
+            <li>Wellness spa aesthetic</li>
+            <li>Team of anonymous practitioners</li>
+            <li>Trend-focused services</li>
+            <li>Mass market messaging</li>
+            <li>Location-specific limitations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Colors -->
+  <section id="colors" class="section section-warm">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-number">03</div>
+        <h2 class="section-title">Color System</h2>
+        <p class="section-subtitle">A warm, sophisticated palette that balances approachability with authority.</p>
+      </div>
+
+      <!-- Primary -->
+      <div class="color-group">
+        <div class="color-group-title">Primary — Warm Neutrals</div>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #f8f7f4;"></div>
+            <div class="color-info">
+              <div class="color-name">Marble White</div>
+              <div class="color-hex">#f8f7f4</div>
+              <div class="color-usage">Primary background</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #f5f3ef;"></div>
+            <div class="color-info">
+              <div class="color-name">Marble Warm</div>
+              <div class="color-hex">#f5f3ef</div>
+              <div class="color-usage">Secondary background</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #eeecea;"></div>
+            <div class="color-info">
+              <div class="color-name">Parchment</div>
+              <div class="color-hex">#eeecea</div>
+              <div class="color-usage">Tertiary, cards</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Anchor -->
+      <div class="color-group">
+        <div class="color-group-title">Anchor — Deep Sophistication</div>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #0a0a0a;"></div>
+            <div class="color-info">
+              <div class="color-name">Ink</div>
+              <div class="color-hex">#0a0a0a</div>
+              <div class="color-usage">Primary text, dark sections</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #1a1a1a;"></div>
+            <div class="color-info">
+              <div class="color-name">Charcoal</div>
+              <div class="color-hex">#1a1a1a</div>
+              <div class="color-usage">Secondary text</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #2d2d2d;"></div>
+            <div class="color-info">
+              <div class="color-name">Graphite</div>
+              <div class="color-hex">#2d2d2d</div>
+              <div class="color-usage">Tertiary text</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Accent -->
+      <div class="color-group">
+        <div class="color-group-title">Accent — Muted Gold</div>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #b8a067;"></div>
+            <div class="color-info">
+              <div class="color-name">Gold</div>
+              <div class="color-hex">#b8a067</div>
+              <div class="color-usage">Primary accent</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #a69155;"></div>
+            <div class="color-info">
+              <div class="color-name">Gold Muted</div>
+              <div class="color-hex">#a69155</div>
+              <div class="color-usage">Hover states</div>
+            </div>
+          </div>
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #d4c9a8;"></div>
+            <div class="color-info">
+              <div class="color-name">Gold Pale</div>
+              <div class="color-hex">#d4c9a8</div>
+              <div class="color-usage">Subtle accents</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scientific -->
+      <div class="color-group">
+        <div class="color-group-title">Scientific — Data Accent</div>
+        <div class="color-grid">
+          <div class="color-swatch">
+            <div class="color-preview" style="background: #4a5568;"></div>
+            <div class="color-info">
+              <div class="color-name">Precision Blue</div>
+              <div class="color-hex">#4a5568</div>
+              <div class="color-usage">Charts, data elements</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Code Block -->
+      <div class="code-block">
+        <code>
+<span class="comment">/* CSS Variables */</span>
+:root {
+  <span class="property">--marble-white</span>: <span class="value">#f8f7f4</span>;
+  <span class="property">--marble-warm</span>: <span class="value">#f5f3ef</span>;
+  <span class="property">--parchment</span>: <span class="value">#eeecea</span>;
+  <span class="property">--ink</span>: <span class="value">#0a0a0a</span>;
+  <span class="property">--charcoal</span>: <span class="value">#1a1a1a</span>;
+  <span class="property">--gold</span>: <span class="value">#b8a067</span>;
+  <span class="property">--gold-muted</span>: <span class="value">#a69155</span>;
+  <span class="property">--gold-pale</span>: <span class="value">#d4c9a8</span>;
+}
+        </code>
+      </div>
+    </div>
+  </section>
+
+  <!-- Typography -->
+  <section id="typography" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-number">04</div>
+        <h2 class="section-title">Typography</h2>
+        <p class="section-subtitle">A three-font system that balances elegance, readability, and scientific precision.</p>
+      </div>
+
+      <!-- Display -->
+      <div class="type-specimen">
+        <div class="type-label">Display — Headlines & Hero Text</div>
+        <div class="type-sample-display font-display">
+          The Art of Living Longer
+        </div>
+        <div class="type-meta">
+          <div class="type-meta-item"><strong>Font:</strong> Cormorant Garamond</div>
+          <div class="type-meta-item"><strong>Weights:</strong> 300, 400, 500</div>
+          <div class="type-meta-item"><strong>Usage:</strong> Headlines, hero text, pull quotes</div>
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="type-specimen">
+        <div class="type-label">Body — Paragraphs & UI</div>
+        <div class="type-sample-body">
+          Evidence-based longevity protocols for executives who demand measurable outcomes. We combine precision medicine with personalized care, delivering interventions that optimize your healthspan — not just your lifespan.
+        </div>
+        <div class="type-meta">
+          <div class="type-meta-item"><strong>Font:</strong> Outfit</div>
+          <div class="type-meta-item"><strong>Weights:</strong> 200, 300, 400, 500</div>
+          <div class="type-meta-item"><strong>Usage:</strong> Paragraphs, navigation, UI elements</div>
+        </div>
+      </div>
+
+      <!-- Mono -->
+      <div class="type-specimen">
+        <div class="type-label">Data — Stats & Credentials</div>
+        <div class="type-sample-mono">
+          MBChB (Hons) · MRCGP · MSc Sports & Exercise Medicine<br>
+          20+ Years · Dubai & London · DHA Licensed
+        </div>
+        <div class="type-meta">
+          <div class="type-meta-item"><strong>Font:</strong> JetBrains Mono</div>
+          <div class="type-meta-item"><strong>Weights:</strong> 400, 500</div>
+          <div class="type-meta-item"><strong>Usage:</strong> Stats, credentials, scientific notation, badges</div>
+        </div>
+      </div>
+
+      <!-- Scale -->
+      <h3 class="font-display" style="font-size: 1.5rem; margin: 3rem 0 1.5rem;">Type Scale</h3>
+      <div class="scale-demo">
+        <div class="scale-item">
+          <div class="scale-label">Hero</div>
+          <div class="font-display scale-hero" style="line-height: 1;">Aa</div>
+        </div>
+        <div class="scale-item">
+          <div class="scale-label">H1</div>
+          <div class="font-display scale-h1" style="line-height: 1;">Heading One</div>
+        </div>
+        <div class="scale-item">
+          <div class="scale-label">H2</div>
+          <div class="font-display scale-h2" style="line-height: 1;">Heading Two</div>
+        </div>
+        <div class="scale-item">
+          <div class="scale-label">H3</div>
+          <div class="font-display scale-h3" style="line-height: 1;">Heading Three</div>
+        </div>
+        <div class="scale-item">
+          <div class="scale-label">Large</div>
+          <div class="scale-large">Large body text for introductions</div>
+        </div>
+        <div class="scale-item">
+          <div class="scale-label">Base</div>
+          <div class="scale-base">Base body text for paragraphs</div>
+        </div>
+        <div class="scale-item">
+          <div class="scale-label">Small</div>
+          <div class="scale-small">Small text for captions and metadata</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Voice -->
+  <section id="voice" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-number">05</div>
+        <h2 class="section-title">Voice & Tone</h2>
+        <p class="section-subtitle">Quietly authoritative. The visual equivalent of a Patek Philippe — refined craftsmanship that doesn't need to announce itself.</p>
+      </div>
+
+      <div class="voice-grid" style="margin-bottom: 3rem;">
+        <div class="voice-card" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
+          <h3 style="color: white;">Authoritative</h3>
+          <p style="color: var(--text-muted);">Speaks with quiet confidence, never oversells</p>
+        </div>
+        <div class="voice-card" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
+          <h3 style="color: white;">Scientific</h3>
+          <p style="color: var(--text-muted);">Uses precise language, avoids buzzwords</p>
+        </div>
+        <div class="voice-card" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
+          <h3 style="color: white;">Refined</h3>
+          <p style="color: var(--text-muted);">Understated luxury, never ostentatious</p>
+        </div>
+        <div class="voice-card" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
+          <h3 style="color: white;">Personal</h3>
+          <p style="color: var(--text-muted);">Dr. Aziz is front-and-center, not hidden behind a brand</p>
+        </div>
+      </div>
+
+      <div class="do-dont-grid">
+        <div class="do-column" style="background: rgba(184, 160, 103, 0.15);">
+          <h4>Use This Language</h4>
+          <ul>
+            <li>"Precision longevity protocols"</li>
+            <li>"Evidence-based healthspan optimization"</li>
+            <li>"Measurable outcomes"</li>
+            <li>"Interventions" (not treatments)</li>
+            <li>"Protocols" (not programs)</li>
+            <li>"Book Consultation"</li>
+          </ul>
+        </div>
+        <div class="dont-column" style="background: rgba(239, 68, 68, 0.1);">
+          <h4>Avoid This Language</h4>
+          <ul>
+            <li>"Unlock your potential" (vague)</li>
+            <li>"Transform your life" (overused)</li>
+            <li>"Revolutionary treatments" (hyperbolic)</li>
+            <li>"Biohacking secrets" (trend-chasing)</li>
+            <li>"Holistic journey" (wellness-speak)</li>
+            <li>"Limited spots! Book now!" (urgency)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Imagery -->
+  <section id="imagery" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-number">06</div>
+        <h2 class="section-title">Imagery Guidelines</h2>
+        <p class="section-subtitle">Warm, scientific, and sophisticated — never clinical or spa-like.</p>
+      </div>
+
+      <div class="image-grid">
+        <div>
+          <div class="image-example">
+            <img src="images/calacatta-gold-marble.jpg" alt="Marble texture">
+          </div>
+          <div class="image-caption">Warm marble textures</div>
+        </div>
+        <div>
+          <div class="image-example">
+            <img src="images/masud-merzaye-EzT0IP2ZZcY-unsplash.jpg" alt="Abstract cellular">
+          </div>
+          <div class="image-caption">Abstract cellular forms</div>
+        </div>
+        <div>
+          <div class="image-example">
+            <img src="images/shabeena-aziz-coat.webp" alt="Dr. Aziz">
+          </div>
+          <div class="image-caption">Professional portraiture</div>
+        </div>
+      </div>
+
+      <div class="do-dont-grid">
+        <div class="do-column">
+          <h4>Imagery Do's</h4>
+          <ul>
+            <li>Abstract cellular/molecular forms</li>
+            <li>Light refracting through glass</li>
+            <li>Clean laboratory aesthetics</li>
+            <li>Architectural precision</li>
+            <li>Warm marble textures</li>
+            <li>Dr. Aziz in professional context</li>
+            <li>Subtle warm color grading</li>
+          </ul>
+        </div>
+        <div class="dont-column">
+          <h4>Imagery Don'ts</h4>
+          <ul>
+            <li>Generic stock photos of happy people</li>
+            <li>Obvious medical equipment</li>
+            <li>Spa/wellness imagery (candles, stones)</li>
+            <li>Busy, cluttered compositions</li>
+            <li>Cold, clinical environments</li>
+            <li>Overly posed or artificial portraits</li>
+            <li>Dubai bling aesthetic</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Components -->
+  <section id="components" class="section section-warm">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-number">07</div>
+        <h2 class="section-title">UI Components</h2>
+        <p class="section-subtitle">Reusable components that embody the Precision Luxe aesthetic.</p>
+      </div>
+
+      <!-- Buttons -->
+      <h3 class="font-display" style="font-size: 1.5rem; margin: 2rem 0 1rem;">Buttons</h3>
+      <div class="component-demo">
+        <div class="buttons-row">
+          <button class="btn btn-primary">Book Consultation</button>
+          <button class="btn btn-secondary">Learn More</button>
+          <button class="btn btn-ghost">View Services →</button>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <h3 class="font-display" style="font-size: 1.5rem; margin: 2rem 0 1rem;">Badges</h3>
+      <div class="component-demo">
+        <div class="buttons-row">
+          <span class="badge badge-gold">Dubai & London</span>
+          <span class="badge badge-gold">DHA Licensed</span>
+          <span class="badge badge-dark">New Service</span>
+        </div>
+      </div>
+
+      <!-- Credentials -->
+      <h3 class="font-display" style="font-size: 1.5rem; margin: 2rem 0 1rem;">Credentials</h3>
+      <div class="component-demo">
+        <span class="credential">MBChB (Hons)</span>
+        <span class="credential">MRCGP</span>
+        <span class="credential">MSc Sports & Exercise Medicine</span>
+      </div>
+
+      <!-- Stats -->
+      <h3 class="font-display" style="font-size: 1.5rem; margin: 2rem 0 1rem;">Stats</h3>
+      <div class="component-demo">
+        <div class="stat-demo">
+          <div class="stat">
+            <div class="stat-value">20+</div>
+            <div class="stat-label">Years Experience</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">2</div>
+            <div class="stat-label">Global Locations</div>
+          </div>
+          <div class="stat">
+            <div class="stat-value">500+</div>
+            <div class="stat-label">Executive Clients</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Glass Card -->
+      <h3 class="font-display" style="font-size: 1.5rem; margin: 2rem 0 1rem;">Glass Morphism</h3>
+      <div class="glass-demo">
+        <div class="glass-card">
+          <span class="badge badge-gold" style="margin-bottom: 1rem;">Featured</span>
+          <h3>Foundation Assessment</h3>
+          <p>A comprehensive baseline analysis for those ready to understand their body's true potential.</p>
+        </div>
+      </div>
+
+      <!-- Code -->
+      <div class="code-block">
+        <code>
+<span class="comment">/* Glass Morphism CSS */</span>
+.glass {
+  <span class="property">background</span>: <span class="value">rgba(255, 255, 255, 0.6)</span>;
+  <span class="property">backdrop-filter</span>: <span class="value">blur(20px)</span>;
+  <span class="property">-webkit-backdrop-filter</span>: <span class="value">blur(20px)</span>;
+  <span class="property">border</span>: <span class="value">1px solid rgba(255, 255, 255, 0.4)</span>;
+  <span class="property">box-shadow</span>:
+    <span class="value">0 8px 32px rgba(0, 0, 0, 0.08)</span>,
+    <span class="value">inset 0 1px 0 rgba(255, 255, 255, 0.6)</span>;
+}
+        </code>
+      </div>
+    </div>
+  </section>
+
+  <!-- Motion -->
+  <section id="motion" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-number">08</div>
+        <h2 class="section-title">Motion & Animation</h2>
+        <p class="section-subtitle">Restrained but purposeful — every animation should feel measured, like a precise medical instrument.</p>
+      </div>
+
+      <div class="motion-demo">
+        <div class="motion-box"></div>
+        <p style="color: var(--text-secondary); font-size: 0.9rem;">Example: Subtle floating animation</p>
+      </div>
+
+      <h3 class="font-display" style="font-size: 1.5rem; margin: 3rem 0 1rem;">Motion Principles</h3>
+      <div class="voice-grid">
+        <div class="voice-card">
+          <h3>Earn Attention</h3>
+          <p>Don't animate everything; make motion meaningful</p>
+        </div>
+        <div class="voice-card">
+          <h3>Mathematical Precision</h3>
+          <p>Use consistent timing, measured stagger delays</p>
+        </div>
+        <div class="voice-card">
+          <h3>Subtle Depth</h3>
+          <p>Parallax and layering create sophistication</p>
+        </div>
+        <div class="voice-card">
+          <h3>Performance First</h3>
+          <p>Smooth 60fps; prefer CSS transforms and opacity</p>
+        </div>
+      </div>
+
+      <h3 class="font-display" style="font-size: 1.5rem; margin: 3rem 0 1rem;">Timing Guidelines</h3>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Element</th>
+              <th>Duration</th>
+              <th>Easing</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Page transitions</td>
+              <td>0.6–0.8s</td>
+              <td>cubic-bezier(0.16, 1, 0.3, 1)</td>
+            </tr>
+            <tr>
+              <td>Scroll reveals</td>
+              <td>0.6–1.0s</td>
+              <td>ease-out</td>
+            </tr>
+            <tr>
+              <td>Hover states</td>
+              <td>0.3s</td>
+              <td>ease</td>
+            </tr>
+            <tr>
+              <td>Micro-interactions</td>
+              <td>0.15–0.2s</td>
+              <td>ease-out</td>
+            </tr>
+            <tr>
+              <td>Stagger delay</td>
+              <td>0.08–0.15s</td>
+              <td>—</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="do-dont-grid">
+        <div class="do-column">
+          <h4>Motion Do's</h4>
+          <ul>
+            <li>Staggered text reveals</li>
+            <li>Scroll-triggered fade-ups</li>
+            <li>Subtle parallax depth</li>
+            <li>Animated stat counters</li>
+            <li>Smooth hover transitions</li>
+          </ul>
+        </div>
+        <div class="dont-column">
+          <h4>Motion Don'ts</h4>
+          <ul>
+            <li>Bouncy/elastic easing (too playful)</li>
+            <li>Excessive rotation or scaling</li>
+            <li>Animations that delay content access</li>
+            <li>Motion that distracts from content</li>
+            <li>Anything that feels "fun" rather than "refined"</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical -->
+  <section id="technical" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <div class="section-number">09</div>
+        <h2 class="section-title">Technical Specifications</h2>
+        <p class="section-subtitle">Performance targets, browser support, and accessibility requirements.</p>
+      </div>
+
+      <h3 class="font-display" style="font-size: 1.5rem; margin: 2rem 0 1rem; color: white;">Performance Targets</h3>
+      <div class="table-wrapper">
+        <table style="color: white;">
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Target</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lighthouse Performance</td>
+              <td>90+</td>
+            </tr>
+            <tr>
+              <td>First Contentful Paint</td>
+              <td>&lt; 1.5s</td>
+            </tr>
+            <tr>
+              <td>Largest Contentful Paint</td>
+              <td>&lt; 2.5s</td>
+            </tr>
+            <tr>
+              <td>Cumulative Layout Shift</td>
+              <td>&lt; 0.1</td>
+            </tr>
+            <tr>
+              <td>Total Page Weight</td>
+              <td>&lt; 2MB</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="font-display" style="font-size: 1.5rem; margin: 3rem 0 1rem; color: white;">Responsive Breakpoints</h3>
+      <div class="code-block">
+        <code>
+<span class="comment">/* Mobile first */</span>
+<span class="property">--bp-sm</span>: <span class="value">640px</span>;   <span class="comment">/* Large phones */</span>
+<span class="property">--bp-md</span>: <span class="value">768px</span>;   <span class="comment">/* Tablets */</span>
+<span class="property">--bp-lg</span>: <span class="value">1024px</span>;  <span class="comment">/* Desktop */</span>
+<span class="property">--bp-xl</span>: <span class="value">1280px</span>;  <span class="comment">/* Large desktop */</span>
+<span class="property">--bp-2xl</span>: <span class="value">1536px</span>; <span class="comment">/* Extra large */</span>
+        </code>
+      </div>
+
+      <h3 class="font-display" style="font-size: 1.5rem; margin: 3rem 0 1rem; color: white;">Accessibility Requirements</h3>
+      <ul style="color: var(--text-muted); list-style: none;">
+        <li style="padding: 0.5rem 0;">✓ WCAG 2.1 AA compliance</li>
+        <li style="padding: 0.5rem 0;">✓ Keyboard navigation support</li>
+        <li style="padding: 0.5rem 0;">✓ Screen reader compatibility</li>
+        <li style="padding: 0.5rem 0;">✓ Reduced motion support (prefers-reduced-motion)</li>
+        <li style="padding: 0.5rem 0;">✓ Sufficient color contrast (4.5:1 minimum)</li>
+      </ul>
+
+      <h3 class="font-display" style="font-size: 1.5rem; margin: 3rem 0 1rem; color: white;">Browser Support</h3>
+      <ul style="color: var(--text-muted); list-style: none;">
+        <li style="padding: 0.5rem 0;">✓ Chrome (last 2 versions)</li>
+        <li style="padding: 0.5rem 0;">✓ Safari (last 2 versions)</li>
+        <li style="padding: 0.5rem 0;">✓ Firefox (last 2 versions)</li>
+        <li style="padding: 0.5rem 0;">✓ Edge (last 2 versions)</li>
+        <li style="padding: 0.5rem 0;">✓ Mobile Safari iOS 14+</li>
+        <li style="padding: 0.5rem 0;">✓ Chrome Android</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-logo">NeoLux<span>Health</span></div>
+        <div class="footer-links">
+          <a href="index.html">Design Previews</a>
+          <a href="v4.html">V4</a>
+          <a href="v5.html">V5</a>
+          <a href="v7.html">V7</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>Brand Guide v1.0 — December 2025</p>
+        <p style="margin-top: 0.5rem;">NeoLux Health — Precision Longevity Medicine</p>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
