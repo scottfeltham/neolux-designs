@@ -1,0 +1,1368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeoLux Medical | Precision Longevity Medicine</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* Primary - Brand Guide */
+      --ivory: #F8F5F2;
+      --gold: #C4A46D;
+      --charcoal: #1A1A1A;
+      /* Secondary - Brand Guide */
+      --rose-gold: #C9A59A;
+      --slate: #666A6D;
+      --sand: #E7DCCB;
+      /* Extended */
+      --gold-light: #D4BC8A;
+      --gold-dark: #A8893F;
+      --cream: #F8F5F2;
+      --cream-warm: #f3efe6;
+      --espresso: #1a1a1a;
+      --white: #ffffff;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--ivory);
+      color: var(--charcoal);
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Subtle grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+      opacity: 0.018;
+      pointer-events: none;
+      z-index: 10000;
+    }
+
+    .serif {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    /* =============================================
+       NAVIGATION
+       ============================================= */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.5s ease;
+    }
+
+    .nav.scrolled {
+      background: rgba(248,246,241,0.95);
+      backdrop-filter: blur(20px);
+    }
+
+    @media (min-width: 1024px) {
+      .nav { padding: 2rem 4rem; }
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.375rem;
+      font-weight: 400;
+      color: var(--espresso);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-logo .motif {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: none;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    @media (min-width: 1024px) {
+      .nav-links { display: flex; }
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      color: var(--charcoal);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    .nav-cta {
+      background: transparent;
+      border: 1px solid var(--charcoal);
+      color: var(--charcoal);
+      padding: 0.625rem 1.25rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--charcoal);
+      color: var(--white);
+    }
+
+    /* =============================================
+       HERO - ETHEREAL FULL BLEED
+       ============================================= */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      align-items: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-media {
+      position: absolute;
+      inset: 0;
+    }
+
+    .hero-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
+
+    /* Ethereal overlays */
+    .hero-media::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 40%, rgba(196,164,109,0.2) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 60%, rgba(196,165,116,0.15) 0%, transparent 50%);
+      z-index: 1;
+    }
+
+    .hero-media::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(248,246,241,0.2) 0%, transparent 30%),
+        linear-gradient(0deg, rgba(248,246,241,1) 0%, rgba(248,246,241,0.8) 15%, transparent 40%);
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      width: 100%;
+      padding: 0 2rem 6rem;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-content {
+        padding: 0 4rem 8rem;
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        gap: 4rem;
+        align-items: end;
+      }
+    }
+
+    .hero-main {
+      max-width: 700px;
+    }
+
+    .hero-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.875rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--espresso);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      font-weight: 300;
+    }
+
+    .hero-sub {
+      font-size: 1.0625rem;
+      color: var(--charcoal);
+      max-width: 500px;
+      line-height: 1.8;
+      opacity: 0.85;
+    }
+
+    /* Floating card */
+    .hero-card {
+      background: var(--white);
+      padding: 2.5rem;
+      margin-top: 3rem;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+    }
+
+    @media (min-width: 1024px) {
+      .hero-card { margin-top: 0; }
+    }
+
+    .hero-card-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .hero-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--espresso);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-card p {
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
+    }
+
+    .hero-card-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.75rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--espresso);
+      text-decoration: none;
+      padding-bottom: 0.25rem;
+      border-bottom: 1px solid var(--gold);
+      transition: all 0.3s;
+    }
+
+    .hero-card-cta:hover {
+      gap: 1rem;
+      border-color: var(--espresso);
+    }
+
+    .hero-card-cta svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* Organic line decoration */
+    .hero-line {
+      position: absolute;
+      right: 10%;
+      top: 20%;
+      width: 300px;
+      height: 400px;
+      z-index: 5;
+      opacity: 0.4;
+      display: none;
+    }
+
+    @media (min-width: 1200px) {
+      .hero-line { display: block; }
+    }
+
+    .hero-line svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    .hero-line path {
+      fill: none;
+      stroke: var(--gold);
+      stroke-width: 1;
+      stroke-dasharray: 1000;
+      stroke-dashoffset: 1000;
+      animation: drawLine 3s ease-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    @keyframes drawLine {
+      to { stroke-dashoffset: 0; }
+    }
+
+    /* =============================================
+       INTRO - SPLIT WITH ORGANIC ILLUSTRATION
+       ============================================= */
+    .intro {
+      background: var(--cream);
+      padding: 8rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (min-width: 1024px) {
+      .intro { padding: 12rem 4rem; }
+    }
+
+    .intro-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      gap: 4rem;
+    }
+
+    @media (min-width: 1024px) {
+      .intro-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8rem;
+        align-items: center;
+      }
+    }
+
+    .intro-visual {
+      position: relative;
+      aspect-ratio: 4/5;
+    }
+
+    .intro-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    /* Organic ellipse overlay */
+    .intro-visual::after {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 200px;
+      height: 280px;
+      border: 1px solid var(--gold);
+      border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+      opacity: 0.5;
+    }
+
+    .intro-content {
+      max-width: 500px;
+    }
+
+    .section-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.875rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .intro h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--espresso);
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .intro h2 em {
+      font-style: italic;
+    }
+
+    .intro-text {
+      font-size: 1rem;
+      color: var(--charcoal);
+      line-height: 1.9;
+      opacity: 0.85;
+    }
+
+    .intro-text + .intro-text {
+      margin-top: 1.5rem;
+    }
+
+    /* =============================================
+       DOCTOR SECTION - SINGLE USE, EDITORIAL
+       ============================================= */
+    .doctor {
+      background: var(--cream-warm);
+      padding: 8rem 2rem;
+      position: relative;
+    }
+
+    @media (min-width: 1024px) {
+      .doctor { padding: 10rem 4rem; }
+    }
+
+    .doctor-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      gap: 4rem;
+    }
+
+    @media (min-width: 1024px) {
+      .doctor-grid {
+        grid-template-columns: 1.2fr 1fr;
+        gap: 6rem;
+        align-items: center;
+      }
+    }
+
+    .doctor-image {
+      position: relative;
+    }
+
+    .doctor-image img {
+      width: 100%;
+      max-width: 500px;
+    }
+
+    .doctor-image::before {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: -20px;
+      right: 20px;
+      top: 20px;
+      background: var(--gold-light);
+      opacity: 0.3;
+      z-index: -1;
+    }
+
+    .doctor-content {
+      max-width: 480px;
+    }
+
+    .doctor-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .doctor h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--espresso);
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .doctor-credentials {
+      font-size: 0.85rem;
+      color: var(--gold-dark);
+      margin-bottom: 2rem;
+    }
+
+    .doctor-text {
+      font-size: 0.95rem;
+      color: var(--charcoal);
+      line-height: 1.9;
+      opacity: 0.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .doctor-stats {
+      display: flex;
+      gap: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--sand);
+      margin-top: 2rem;
+    }
+
+    .doctor-stat {
+      text-align: left;
+    }
+
+    .doctor-stat-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--espresso);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .doctor-stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* =============================================
+       SERVICES - EDITORIAL NUMBERED LIST
+       ============================================= */
+    .services {
+      background: var(--white);
+      padding: 8rem 2rem;
+    }
+
+    @media (min-width: 1024px) {
+      .services { padding: 12rem 4rem; }
+    }
+
+    .services-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .services-header {
+      max-width: 600px;
+      margin-bottom: 5rem;
+    }
+
+    .services h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--espresso);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .services h2 em {
+      font-style: italic;
+    }
+
+    .services-intro {
+      font-size: 1rem;
+      color: var(--charcoal);
+      line-height: 1.8;
+      opacity: 0.8;
+    }
+
+    .services-list {
+      display: grid;
+      gap: 0;
+    }
+
+    .service-item {
+      display: grid;
+      gap: 1.5rem;
+      padding: 2.5rem 0;
+      border-bottom: 1px solid var(--sand);
+    }
+
+    @media (min-width: 768px) {
+      .service-item {
+        grid-template-columns: 60px 200px 1fr;
+        gap: 2rem;
+        align-items: baseline;
+      }
+    }
+
+    .service-item:first-child {
+      border-top: 1px solid var(--sand);
+    }
+
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.875rem;
+      color: var(--gold);
+    }
+
+    .service-item h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.375rem;
+      font-weight: 400;
+      color: var(--espresso);
+      letter-spacing: -0.01em;
+    }
+
+    .service-item p {
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      line-height: 1.7;
+      opacity: 0.75;
+      max-width: 400px;
+    }
+
+    /* =============================================
+       PHILOSOPHY - FULL BLEED IMAGE
+       ============================================= */
+    .philosophy {
+      position: relative;
+      min-height: 80vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+    }
+
+    .philosophy-bg {
+      position: absolute;
+      inset: 0;
+    }
+
+    .philosophy-bg video,
+    .philosophy-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .philosophy-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, rgba(248,245,242,0.95) 0%, rgba(248,245,242,0.7) 50%, transparent 100%);
+    }
+
+    .philosophy-content {
+      position: relative;
+      z-index: 10;
+      max-width: 600px;
+      padding: 6rem 2rem;
+    }
+
+    @media (min-width: 1024px) {
+      .philosophy-content { padding: 8rem 4rem; }
+    }
+
+    .philosophy h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
+      font-weight: 300;
+      line-height: 1.2;
+      color: var(--espresso);
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .philosophy h2 em {
+      font-style: italic;
+    }
+
+    .philosophy-text {
+      font-size: 1rem;
+      color: var(--charcoal);
+      line-height: 1.9;
+      opacity: 0.85;
+    }
+
+    /* Organic SVG */
+    .philosophy-svg {
+      position: absolute;
+      right: 15%;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 250px;
+      height: 350px;
+      z-index: 5;
+      opacity: 0.25;
+      display: none;
+    }
+
+    @media (min-width: 1200px) {
+      .philosophy-svg { display: block; }
+    }
+
+    .philosophy-svg ellipse {
+      fill: none;
+      stroke: var(--gold);
+      stroke-width: 1;
+    }
+
+    /* =============================================
+       APPROACH - FOUR PILLARS
+       ============================================= */
+    .approach {
+      background: var(--cream);
+      padding: 8rem 2rem;
+    }
+
+    @media (min-width: 1024px) {
+      .approach { padding: 12rem 4rem; }
+    }
+
+    .approach-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .approach-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 5rem;
+    }
+
+    .approach h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--espresso);
+      letter-spacing: -0.02em;
+    }
+
+    .approach h2 em {
+      font-style: italic;
+    }
+
+    .pillars {
+      display: grid;
+      gap: 2rem;
+    }
+
+    @media (min-width: 768px) {
+      .pillars { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (min-width: 1024px) {
+      .pillars { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    }
+
+    .pillar {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      position: relative;
+    }
+
+    .pillar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.6s ease;
+    }
+
+    .pillar:hover::before {
+      transform: scaleX(1);
+    }
+
+    .pillar-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.875rem;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .pillar h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.375rem;
+      font-weight: 400;
+      color: var(--espresso);
+      margin-bottom: 1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .pillar p {
+      font-size: 0.875rem;
+      color: var(--charcoal);
+      line-height: 1.7;
+      opacity: 0.75;
+    }
+
+    /* =============================================
+       MARQUEE TAGS
+       ============================================= */
+    .tags {
+      background: var(--sand);
+      padding: 1.5rem 0;
+      overflow: hidden;
+    }
+
+    .tags-track {
+      display: flex;
+      gap: 3rem;
+      animation: marquee 40s linear infinite;
+    }
+
+    @keyframes marquee {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .tag {
+      flex-shrink: 0;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: var(--espresso);
+      opacity: 0.7;
+    }
+
+    .tag-dot {
+      color: var(--gold-dark);
+      margin: 0 0.5rem;
+    }
+
+    /* =============================================
+       CTA
+       ============================================= */
+    .cta {
+      background: var(--cream-warm);
+      padding: 8rem 2rem;
+      text-align: center;
+    }
+
+    @media (min-width: 1024px) {
+      .cta { padding: 10rem 4rem; }
+    }
+
+    .cta-inner {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .cta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 300;
+      line-height: 1.15;
+      color: var(--espresso);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .cta-text {
+      font-size: 1rem;
+      color: var(--charcoal);
+      line-height: 1.8;
+      opacity: 0.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .btn-dark {
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 1rem 2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-dark:hover {
+      background: var(--espresso);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--charcoal);
+      color: var(--charcoal);
+      padding: 1rem 2rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline:hover {
+      background: var(--charcoal);
+      color: var(--white);
+    }
+
+    /* =============================================
+       FOOTER
+       ============================================= */
+    .footer {
+      background: var(--espresso);
+      color: var(--white);
+      padding: 5rem 2rem 3rem;
+    }
+
+    @media (min-width: 1024px) {
+      .footer { padding: 6rem 4rem 3rem; }
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      gap: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 4rem;
+      }
+    }
+
+    .footer-brand h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.375rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-brand h3 .motif {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+    }
+
+    .footer-brand p {
+      font-size: 0.875rem;
+      opacity: 0.6;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.4;
+      margin-bottom: 1.25rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.625rem;
+    }
+
+    .footer-col a {
+      font-size: 0.875rem;
+      color: var(--white);
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+
+    .footer-col a:hover { opacity: 1; }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 3rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      opacity: 0.4;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-socials a {
+      color: var(--white);
+      opacity: 0.5;
+      transition: opacity 0.3s;
+    }
+
+    .footer-socials a:hover { opacity: 1; }
+
+    .footer-socials svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    /* =============================================
+       ANIMATIONS
+       ============================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 1s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.15s; }
+    .reveal-delay-2 { transition-delay: 0.3s; }
+    .reveal-delay-3 { transition-delay: 0.45s; }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav">
+    <a href="#" class="nav-logo">
+      <img src="../Gemini_Generated_Image_ielmr1ielmr1ielm.png" alt="" class="motif">
+      NeoLux Medical
+    </a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#approach">Approach</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book Consultation</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-media">
+      <!-- Ethereal, dreamlike imagery — water, silhouettes, golden hour -->
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1920&q=85" alt="Ethereal wellness">
+    </div>
+
+    <!-- Organic flowing line -->
+    <div class="hero-line">
+      <svg viewBox="0 0 300 400">
+        <path d="M150,20 Q250,100 200,200 Q150,300 250,380" />
+        <path d="M100,50 Q200,150 150,250 Q100,350 200,400" />
+      </svg>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-main reveal">
+        <p class="hero-number">[01]</p>
+        <h1 class="hero-title">
+          The art of <em>living longer</em>
+        </h1>
+        <p class="hero-sub">
+          Evidence-based longevity protocols for executives who demand measurable outcomes. Personalised care under Dr Shabeena Aziz in Dubai and London.
+        </p>
+      </div>
+      <div class="hero-card reveal reveal-delay-1">
+        <p class="hero-card-label">Dubai · London</p>
+        <h3>Begin Your Assessment</h3>
+        <p>Virtual and in-person consultations with Dr Shabeena Aziz, specialising in longevity medicine, preventative health, and sports medicine.</p>
+        <a href="#contact" class="hero-card-cta">
+          Book consultation
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="intro" id="about">
+    <div class="intro-grid">
+      <div class="intro-visual reveal">
+        <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1000&q=85" alt="Wellness moment">
+      </div>
+      <div class="intro-content">
+        <p class="section-number reveal">[02]</p>
+        <h2 class="reveal reveal-delay-1">Aging is measurable. <em>Healthspan is modifiable.</em></h2>
+        <p class="intro-text reveal reveal-delay-2">
+          NeoLux Medical exists at the intersection of translational geroscience and clinical medicine. We don't treat disease—we prevent it, measuring biological age and optimising the years you have left to live in strength, clarity, and vitality.
+        </p>
+        <p class="intro-text reveal reveal-delay-2">
+          This is medicine designed for visionary leaders who understand that health is their greatest asset.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctor Section - Single Use -->
+  <section class="doctor">
+    <div class="doctor-grid">
+      <div class="doctor-image reveal">
+        <img src="images/shabeena-aziz.jpg" alt="Dr. Shabeena Aziz">
+      </div>
+      <div class="doctor-content">
+        <p class="doctor-label reveal">Your Physician</p>
+        <h2 class="reveal reveal-delay-1">Dr. Shabeena Aziz</h2>
+        <p class="doctor-credentials reveal reveal-delay-1">MBChB (Hons), MRCGP, MSc Sports & Exercise Medicine</p>
+        <p class="doctor-text reveal reveal-delay-2">
+          Dr Shabeena Aziz brings over two decades of clinical experience spanning primary care in Chelsea, humanitarian medicine abroad, and specialised longevity practice. Her unique approach integrates Family Medicine, Longevity Medicine, and Sports Medicine.
+        </p>
+        <p class="doctor-text reveal reveal-delay-2">
+          A personal catalyst—her father's stroke—deepened her commitment to early detection and preventative intervention. Today, she helps executives understand their vulnerabilities before they become limitations.
+        </p>
+        <div class="doctor-stats reveal reveal-delay-3">
+          <div class="doctor-stat">
+            <div class="doctor-stat-value">20+</div>
+            <div class="doctor-stat-label">Years Experience</div>
+          </div>
+          <div class="doctor-stat">
+            <div class="doctor-stat-value">UK & UAE</div>
+            <div class="doctor-stat-label">Dual Practice</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section id="services" class="services">
+    <div class="services-inner">
+      <div class="services-header">
+        <p class="section-number reveal">[03]</p>
+        <h2 class="reveal reveal-delay-1">Personalised longevity <em>protocols</em></h2>
+        <p class="services-intro reveal reveal-delay-2">Evidence-based interventions tailored to your biology and goals.</p>
+      </div>
+      <div class="services-list">
+        <div class="service-item reveal">
+          <span class="service-num">[01]</span>
+          <h3>Foundation Assessment</h3>
+          <p>A comprehensive baseline analysis for those ready to understand their body's true potential. Full biomarker panel, metabolic assessment, and personalised roadmap.</p>
+        </div>
+        <div class="service-item reveal">
+          <span class="service-num">[02]</span>
+          <h3>Optimisation Protocol</h3>
+          <p>A structured medical programme delivering deep scientific analysis of your health architecture. Advanced diagnostics and quarterly protocol reviews.</p>
+        </div>
+        <div class="service-item reveal">
+          <span class="service-num">[03]</span>
+          <h3>Advanced Protocol</h3>
+          <p>Elite-level assessment integrating peptide interventions, IV therapies, and advanced metabolic programming for sustained performance gains.</p>
+        </div>
+        <div class="service-item reveal">
+          <span class="service-num">[04]</span>
+          <h3>Advanced+ Concierge</h3>
+          <p>The pinnacle of personalised medicine. Unlimited access, priority scheduling, and bespoke interventions tailored to your evolving goals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="philosophy">
+    <div class="philosophy-bg">
+      <video autoplay muted loop playsinline id="philosophyVideo">
+        <source src="../14777427_1920_1080_30fps.mp4" type="video/mp4">
+      </video>
+    </div>
+    <div class="philosophy-svg">
+      <svg viewBox="0 0 250 350">
+        <ellipse cx="125" cy="175" rx="110" ry="160"/>
+        <ellipse cx="125" cy="175" rx="80" ry="120"/>
+        <ellipse cx="125" cy="175" rx="50" ry="75"/>
+      </svg>
+    </div>
+    <div class="philosophy-content">
+      <p class="section-number reveal">[04]</p>
+      <h2 class="reveal reveal-delay-1">Designed to extend the years lived in strength, clarity, and <em>vitality</em></h2>
+      <p class="philosophy-text reveal reveal-delay-2">
+        Healthy aging is not a single intervention. It is a continuous, evidence-based process that preserves function, independence, and quality of life. NeoLux integrates clinical care, lifestyle medicine, diagnostics, and monitoring into a unified model of healthy aging.
+      </p>
+    </div>
+  </section>
+
+  <!-- Approach -->
+  <section id="approach" class="approach">
+    <div class="approach-inner">
+      <div class="approach-header">
+        <p class="section-number reveal">[05]</p>
+        <h2 class="reveal reveal-delay-1">Rooted in <em>science.</em> Guided by evidence.</h2>
+      </div>
+      <div class="pillars">
+        <div class="pillar reveal">
+          <p class="pillar-num">[01]</p>
+          <h3>Prevention</h3>
+          <p>Early identification of modifiable risks through structured assessment and advanced screening.</p>
+        </div>
+        <div class="pillar reveal reveal-delay-1">
+          <p class="pillar-num">[02]</p>
+          <h3>Measurement</h3>
+          <p>Functional, clinical, and molecular markers revealing your biological aging trajectory.</p>
+        </div>
+        <div class="pillar reveal reveal-delay-2">
+          <p class="pillar-num">[03]</p>
+          <h3>Innovation</h3>
+          <p>Evidence-based interventions with ethical governance and scientific transparency.</p>
+        </div>
+        <div class="pillar reveal reveal-delay-3">
+          <p class="pillar-num">[04]</p>
+          <h3>Support</h3>
+          <p>Continuous expert guidance, tracking, and protocol adjustments for long-term success.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tags Marquee -->
+  <section class="tags">
+    <div class="tags-track">
+      <span class="tag">Metabolic Health</span><span class="tag-dot">·</span>
+      <span class="tag">Heart Health</span><span class="tag-dot">·</span>
+      <span class="tag">Hormone Balance</span><span class="tag-dot">·</span>
+      <span class="tag">Cognitive Performance</span><span class="tag-dot">·</span>
+      <span class="tag">Sleep Optimisation</span><span class="tag-dot">·</span>
+      <span class="tag">Immune Regulation</span><span class="tag-dot">·</span>
+      <span class="tag">Nutrition</span><span class="tag-dot">·</span>
+      <span class="tag">Cellular Health</span><span class="tag-dot">·</span>
+      <span class="tag">Metabolic Health</span><span class="tag-dot">·</span>
+      <span class="tag">Heart Health</span><span class="tag-dot">·</span>
+      <span class="tag">Hormone Balance</span><span class="tag-dot">·</span>
+      <span class="tag">Cognitive Performance</span><span class="tag-dot">·</span>
+      <span class="tag">Sleep Optimisation</span><span class="tag-dot">·</span>
+      <span class="tag">Immune Regulation</span><span class="tag-dot">·</span>
+      <span class="tag">Nutrition</span><span class="tag-dot">·</span>
+      <span class="tag">Cellular Health</span><span class="tag-dot">·</span>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section id="contact" class="cta">
+    <div class="cta-inner">
+      <p class="section-number reveal">[06]</p>
+      <h2 class="reveal reveal-delay-1">Begin Your Assessment</h2>
+      <p class="cta-text reveal reveal-delay-2">
+        Take the first step toward understanding your body's true potential. Schedule a consultation with Dr Aziz. Consultations available in Dubai and London. Discretion assured.
+      </p>
+      <div class="cta-buttons reveal reveal-delay-3">
+        <a href="mailto:concierge@neoluxhealth.com" class="btn-dark">Book Consultation</a>
+        <a href="https://wa.me/971585857688" class="btn-outline">WhatsApp Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3><img src="../Gemini_Generated_Image_ielmr1ielmr1ielm.png" alt="" class="motif">NeoLux Medical</h3>
+        <p>Precision longevity medicine, led by Dr Shabeena Aziz. Serving discerning patients in Dubai and London.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Foundation Assessment</a></li>
+          <li><a href="#services">Optimisation Protocol</a></li>
+          <li><a href="#services">Advanced Protocol</a></li>
+          <li><a href="#services">Advanced+ Concierge</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#approach">Our Approach</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:concierge@neoluxhealth.com">concierge@neoluxhealth.com</a></li>
+          <li><a href="tel:+971585857688">+971 58 585 7688</a></li>
+          <li><a href="#">Dubai, UAE</a></li>
+          <li><a href="#">London, UK</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 NeoLux Medical. All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/dr_shabeena_aziz/" aria-label="Instagram">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.threads.com/@dr_shabeena_aziz" aria-label="Threads">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.96-.065-1.182.408-2.256 1.33-3.022.88-.73 2.088-1.146 3.6-1.242 1.02-.064 1.973-.02 2.854.136l.019-.142c-.022-1.237-.235-2.162-.652-2.828-.453-.724-1.166-1.078-2.182-1.086h-.032c-.834.006-1.63.27-2.438.81l-1.095-1.726c1.097-.732 2.376-1.103 3.55-1.103h.046c1.584.02 2.81.614 3.645 1.77.735 1.017 1.107 2.39 1.107 4.085v.091c1.082.476 1.96 1.2 2.533 2.147.738 1.215.94 2.793.551 4.322-.538 2.11-1.839 3.744-3.76 4.728-1.472.755-3.206 1.136-5.156 1.136zm-1.478-6.03c-.053.973.36 1.533.786 1.81.507.328 1.196.454 1.867.417 1.074-.058 1.873-.439 2.443-1.166.517-.659.87-1.593.946-2.801l-.265-.04c-.736-.102-1.537-.126-2.383-.072-1.087.068-1.95.334-2.499.77-.475.376-.865.85-.895 1.082z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/dr-shabeena-aziz" aria-label="LinkedIn">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Nav scroll
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 100);
+    });
+
+    // Reveal animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('in-view');
+      });
+    }, { threshold: 0.1, rootMargin: '-50px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    // Initial load reveals
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.reveal').forEach((el, i) => {
+        if (el.getBoundingClientRect().top < window.innerHeight) {
+          setTimeout(() => el.classList.add('in-view'), i * 100);
+        }
+      });
+
+      // Slow down philosophy background video
+      const philosophyVideo = document.getElementById('philosophyVideo');
+      if (philosophyVideo) {
+        philosophyVideo.playbackRate = 0.8;
+      }
+    });
+  </script>
+</body>
+</html>

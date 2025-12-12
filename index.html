@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeoLux Health — Design Previews</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --marble-white: #f8f7f4;
+      --marble-warm: #f5f3ef;
+      --ink: #0a0a0a;
+      --charcoal: #1a1a1a;
+      --gold: #b8a067;
+      --gold-muted: #a69155;
+      --text-secondary: #6b7280;
+    }
+
+    body {
+      font-family: 'Outfit', system-ui, sans-serif;
+      background: var(--marble-white);
+      color: var(--charcoal);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .container {
+      max-width: 800px;
+      width: 100%;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .logo {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .logo span {
+      color: var(--gold);
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-weight: 300;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+    }
+
+    .designs {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .design-card {
+      display: block;
+      background: var(--marble-warm);
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 12px;
+      padding: 2rem;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+    }
+
+    .design-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.08);
+      border-color: var(--gold);
+    }
+
+    .design-card h2 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.75rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+
+    .design-card p {
+      color: var(--text-secondary);
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+
+    .design-card .arrow {
+      color: var(--gold);
+      font-size: 1.25rem;
+      transition: transform 0.3s ease;
+    }
+
+    .design-card:hover .arrow {
+      transform: translateX(8px);
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(184, 160, 103, 0.1);
+      color: var(--gold);
+      padding: 0.25rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .footer {
+      text-align: center;
+      margin-top: 4rem;
+      color: var(--text-secondary);
+      font-size: 0.875rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1 class="logo">NeoLux<span>Health</span></h1>
+      <p class="subtitle">Design Previews</p>
+    </header>
+
+    <div class="designs">
+      <a href="v4.html" class="design-card">
+        <span class="badge">V4</span>
+        <h2>Ethereal Editorial</h2>
+        <p>Light, airy aesthetic with editorial typography and soft gradients. Warm ivory tones with gold accents.</p>
+        <span class="arrow">&rarr;</span>
+      </a>
+
+      <a href="v5.html" class="design-card">
+        <span class="badge">V5</span>
+        <h2>Immersive</h2>
+        <p>Full-screen sections with bold typography. Sage and cream palette with custom cursor interactions.</p>
+        <span class="arrow">&rarr;</span>
+      </a>
+
+      <a href="v7.html" class="design-card">
+        <span class="badge">V7</span>
+        <h2>Motion</h2>
+        <p>Enhanced animations using Motion.dev. Liquid marble aesthetic with sophisticated scroll-triggered effects.</p>
+        <span class="arrow">&rarr;</span>
+      </a>
+    </div>
+
+    <footer class="footer">
+      <p>NeoLux Health — Precision Longevity Medicine</p>
+    </footer>
+  </div>
+</body>
+</html>

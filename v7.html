@@ -1,0 +1,1765 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NeoLux Medical | Precision Longevity Medicine</title>
+  <!-- v7: Motion.dev Enhanced -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Motion.dev for animations -->
+  <script type="module">
+    import { animate, inView, stagger, scroll } from "https://cdn.jsdelivr.net/npm/motion@11.13.5/+esm";
+    window.Motion = { animate, inView, stagger, scroll };
+  </script>
+
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      /* Primary - Brand Guide */
+      --ivory: #F8F5F2;
+      --gold: #C4A46D;
+      --charcoal: #1A1A1A;
+
+      /* Secondary - Brand Guide */
+      --rose-gold: #C9A59A;
+      --slate: #666A6D;
+      --sand: #E7DCCB;
+
+      /* Extended */
+      --gold-light: #D4BC8A;
+      --gold-dark: #A8893F;
+      --ink: #0a0a0a;
+      --white: #ffffff;
+
+      /* Glass effects */
+      --glass-bg: rgba(255, 255, 255, 0.6);
+      --glass-border: rgba(255, 255, 255, 0.4);
+      --glass-shadow: rgba(0, 0, 0, 0.08);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background: var(--ivory);
+      color: var(--charcoal);
+      font-weight: 400;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* Marble texture background - White Marble with Gold Veins */
+    .marble-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background: url('images/masud-merzaye-EzT0IP2ZZcY-unsplash.jpg') center/cover no-repeat;
+    }
+
+    /* Muted overlay for text contrast */
+    .marble-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(248, 245, 242, 0.7);
+      pointer-events: none;
+    }
+
+    /* Subtle gold tint + vignette */
+    .marble-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg,
+          rgba(196,164,109,0.06) 0%,
+          transparent 40%,
+          transparent 60%,
+          rgba(196,164,109,0.04) 100%
+        ),
+        radial-gradient(ellipse at center, transparent 0%, rgba(248,245,242,0.5) 100%);
+      pointer-events: none;
+    }
+
+
+    .serif {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+    }
+
+    /* =============================================
+       GLASS CARD COMPONENT
+       ============================================= */
+    .glass {
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--glass-border);
+      box-shadow:
+        0 8px 32px var(--glass-shadow),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+
+    .glass-dark {
+      background: rgba(26, 26, 26, 0.85);
+      backdrop-filter: blur(30px);
+      -webkit-backdrop-filter: blur(30px);
+      border: 1px solid rgba(196, 164, 109, 0.2);
+      box-shadow:
+        0 8px 32px rgba(0,0,0,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+
+    .glass-gold {
+      background: linear-gradient(135deg, rgba(196,164,109,0.15) 0%, rgba(196,164,109,0.05) 100%);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(196,164,109,0.3);
+      box-shadow:
+        0 8px 32px rgba(196,164,109,0.1),
+        inset 0 1px 0 rgba(255,255,255,0.4);
+    }
+
+    /* =============================================
+       NAVIGATION
+       ============================================= */
+    .nav {
+      position: fixed;
+      top: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.75rem 1rem;
+      border-radius: 100px;
+    }
+
+    @media (min-width: 1024px) {
+      .nav {
+        gap: 2rem;
+        padding: 1rem 1.5rem;
+      }
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      padding-right: 1rem;
+      border-right: 1px solid rgba(0,0,0,0.1);
+    }
+
+    @media (min-width: 1024px) {
+      .nav-logo {
+        font-size: 1.375rem;
+        padding-right: 2rem;
+      }
+    }
+
+    .nav-links {
+      display: none;
+      gap: 2rem;
+      list-style: none;
+    }
+
+    @media (min-width: 1024px) {
+      .nav-links { display: flex; }
+    }
+
+    .nav-links a {
+      font-size: 0.8rem;
+      font-weight: 400;
+      color: var(--charcoal);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-dark);
+    }
+
+    .nav-cta {
+      background: var(--charcoal);
+      color: var(--white);
+      padding: 0.625rem 1.25rem;
+      border-radius: 100px;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .nav-cta:hover {
+      background: var(--gold-dark);
+      transform: translateY(-2px);
+    }
+
+    /* =============================================
+       HERO
+       ============================================= */
+    .hero {
+      min-height: 100vh;
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 8rem 2rem 4rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (min-width: 1024px) {
+      .hero { padding: 10rem 4rem 6rem; }
+    }
+
+    /* Animated gradient orb */
+    .hero-orb {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,169,98,0.2) 0%, transparent 70%);
+      filter: blur(80px);
+      animation: orbFloat 20s ease-in-out infinite;
+      pointer-events: none;
+    }
+
+    .hero-orb-1 {
+      top: 10%;
+      right: -10%;
+    }
+
+    .hero-orb-2 {
+      bottom: 0;
+      left: -20%;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(45,45,45,0.1) 0%, transparent 70%);
+      animation-delay: -10s;
+    }
+
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -30px) scale(1.05); }
+      50% { transform: translate(-20px, 20px) scale(0.95); }
+      75% { transform: translate(20px, 30px) scale(1.02); }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 10;
+      max-width: 900px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.625rem 1.25rem;
+      border-radius: 100px;
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 1s ease forwards;
+      animation-delay: 0.3s;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.5; transform: scale(1.2); }
+    }
+
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 9vw, 7rem);
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-bottom: 2rem;
+    }
+
+    .hero-title .line {
+      display: block;
+      overflow: hidden;
+      padding-bottom: 0.1em; /* Room for descenders */
+    }
+
+    .hero-title .word {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(100%);
+      /* Animation handled by Motion.dev */
+    }
+
+    .hero-title em {
+      font-style: italic;
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    @keyframes revealText {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-sub {
+      font-size: 1.125rem;
+      font-weight: 300;
+      color: var(--charcoal);
+      max-width: 550px;
+      margin: 0 auto 3rem;
+      line-height: 1.8;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards;
+      animation-delay: 1s;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards;
+      animation-delay: 1.2s;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, var(--gold) 0%, var(--gold-dark) 100%);
+      color: var(--white);
+      padding: 1rem 2.5rem;
+      border-radius: 100px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 4px 20px rgba(196,164,109,0.3);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(196,164,109,0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--charcoal);
+      padding: 1rem 2.5rem;
+      border-radius: 100px;
+      border: 1px solid var(--charcoal);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .btn-outline:hover {
+      background: var(--charcoal);
+      color: var(--white);
+    }
+
+    /* Scroll indicator */
+    .hero-scroll {
+      position: absolute;
+      bottom: 3rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      opacity: 0;
+      animation: fadeUp 1s ease forwards;
+      animation-delay: 1.5s;
+    }
+
+    .hero-scroll span {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--charcoal);
+      opacity: 0.5;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { transform: scaleY(1); opacity: 1; }
+      50% { transform: scaleY(0.5); opacity: 0.3; }
+    }
+
+    /* =============================================
+       STATS BAR
+       ============================================= */
+    .stats-bar {
+      padding: 4rem 2rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .stats-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1px;
+      border-radius: 20px;
+      overflow: hidden;
+      max-width: 900px;
+    }
+
+    .stat-item {
+      flex: 1;
+      min-width: 200px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      background: var(--glass-bg);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      position: relative;
+    }
+
+    .stat-item::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 20%;
+      height: 60%;
+      width: 1px;
+      background: linear-gradient(to bottom, transparent, var(--gold), transparent);
+      opacity: 0.3;
+    }
+
+    .stat-item:last-child::after {
+      display: none;
+    }
+
+    .stat-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 3rem;
+      font-weight: 300;
+      color: var(--ink);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-value .counter {
+      display: inline-block;
+    }
+
+    .stat-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+    }
+
+    /* =============================================
+       INTRO SECTION
+       ============================================= */
+    .intro {
+      padding: 8rem 2rem;
+      position: relative;
+    }
+
+    @media (min-width: 1024px) {
+      .intro { padding: 12rem 4rem; }
+    }
+
+    .intro-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      gap: 4rem;
+    }
+
+    @media (min-width: 1024px) {
+      .intro-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8rem;
+        align-items: center;
+      }
+    }
+
+    .intro-visual {
+      position: relative;
+    }
+
+    .intro-image-wrap {
+      position: relative;
+      border-radius: 300px 300px 20px 20px;
+      overflow: hidden;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.1);
+    }
+
+    .intro-image-wrap img {
+      width: 100%;
+      display: block;
+      transition: transform 8s ease;
+    }
+
+    .intro-image-wrap:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Glass accent card */
+    .intro-accent {
+      position: absolute;
+      bottom: -30px;
+      right: -30px;
+      padding: 2rem;
+      border-radius: 20px;
+      max-width: 220px;
+    }
+
+    .intro-accent-label {
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .intro-accent-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      color: var(--charcoal);
+      line-height: 1.4;
+    }
+
+    .intro-content {
+      max-width: 520px;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold-dark);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::before {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .intro h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .intro h2 em {
+      font-style: italic;
+      color: var(--gold-dark);
+    }
+
+    .intro-text {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--charcoal);
+      opacity: 0.8;
+      margin-bottom: 1.5rem;
+    }
+
+    /* =============================================
+       DOCTOR SECTION
+       ============================================= */
+    .doctor {
+      padding: 8rem 2rem;
+      position: relative;
+    }
+
+    @media (min-width: 1024px) {
+      .doctor { padding: 10rem 4rem; }
+    }
+
+    .doctor-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      border-radius: 30px;
+      padding: 4rem 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (min-width: 1024px) {
+      .doctor-container { padding: 5rem; }
+    }
+
+    /* Decorative corner accents */
+    .doctor-container::before,
+    .doctor-container::after {
+      content: '';
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 1px solid var(--gold);
+      opacity: 0.3;
+    }
+
+    .doctor-container::before {
+      top: 20px;
+      left: 20px;
+      border-right: none;
+      border-bottom: none;
+    }
+
+    .doctor-container::after {
+      bottom: 20px;
+      right: 20px;
+      border-left: none;
+      border-top: none;
+    }
+
+    .doctor-grid {
+      display: grid;
+      gap: 4rem;
+    }
+
+    @media (min-width: 1024px) {
+      .doctor-grid {
+        grid-template-columns: 400px 1fr;
+        gap: 5rem;
+        align-items: center;
+      }
+    }
+
+    .doctor-image {
+      position: relative;
+    }
+
+    .doctor-image img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 20px;
+      box-shadow: 0 30px 60px rgba(0,0,0,0.15);
+    }
+
+    .doctor-image-frame {
+      position: absolute;
+      inset: -15px;
+      border: 1px solid var(--gold);
+      border-radius: 25px;
+      opacity: 0.4;
+      pointer-events: none;
+    }
+
+    .doctor-content {
+      color: var(--white);
+    }
+
+    .doctor-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+    }
+
+    .doctor-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 3.5rem);
+      font-weight: 300;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+    }
+
+    .doctor-credentials {
+      font-size: 0.9rem;
+      color: var(--gold-light);
+      margin-bottom: 2rem;
+      opacity: 0.9;
+    }
+
+    .doctor-bio {
+      font-size: 1rem;
+      line-height: 1.9;
+      opacity: 0.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .doctor-stats {
+      display: flex;
+      gap: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(196,164,109,0.2);
+    }
+
+    .doctor-stat {
+      text-align: left;
+    }
+
+    .doctor-stat-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      font-weight: 300;
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .doctor-stat-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.6;
+    }
+
+    /* =============================================
+       SERVICES
+       ============================================= */
+    .services {
+      padding: 8rem 2rem;
+    }
+
+    @media (min-width: 1024px) {
+      .services { padding: 12rem 4rem; }
+    }
+
+    .services-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .services-header {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 5rem;
+    }
+
+    .services-header h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 1rem;
+      letter-spacing: -0.02em;
+    }
+
+    .services-header h2 em {
+      font-style: italic;
+      color: var(--gold-dark);
+    }
+
+    .services-header p {
+      font-size: 1rem;
+      color: var(--charcoal);
+      opacity: 0.7;
+    }
+
+    .services-grid {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    @media (min-width: 768px) {
+      .services-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    .service-card {
+      padding: 2.5rem;
+      border-radius: 20px;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--gold), var(--gold-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.5s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    }
+
+    .service-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .service-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.5rem;
+      color: var(--gold);
+      opacity: 0.3;
+      line-height: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .service-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--ink);
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.01em;
+    }
+
+    .service-card p {
+      font-size: 0.9rem;
+      color: var(--charcoal);
+      line-height: 1.7;
+      opacity: 0.7;
+    }
+
+    /* Service card initial state for Motion.dev */
+    .service-card {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+
+    /* Service card arrow */
+    .service-arrow {
+      position: absolute;
+      bottom: 2rem;
+      right: 2rem;
+      font-size: 1.25rem;
+      color: var(--gold);
+      opacity: 0;
+      transform: translateX(-10px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .service-card:hover .service-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .service-card:hover .service-num {
+      opacity: 0.6;
+      transform: translateY(-5px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    /* =============================================
+       PHILOSOPHY
+       ============================================= */
+    .philosophy {
+      padding: 8rem 2rem;
+      position: relative;
+    }
+
+    @media (min-width: 1024px) {
+      .philosophy { padding: 12rem 4rem; }
+    }
+
+    .philosophy-grid {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: grid;
+      gap: 4rem;
+    }
+
+    @media (min-width: 1024px) {
+      .philosophy-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8rem;
+        align-items: center;
+      }
+    }
+
+    .philosophy-content {
+      max-width: 520px;
+    }
+
+    .philosophy h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 2rem;
+      letter-spacing: -0.02em;
+    }
+
+    .philosophy h2 em {
+      font-style: italic;
+      color: var(--gold-dark);
+    }
+
+    .philosophy-text {
+      font-size: 1rem;
+      line-height: 1.9;
+      color: var(--charcoal);
+      opacity: 0.8;
+    }
+
+    /* Philosophy visual - Elevation Method */
+    .philosophy-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .elevation-wrapper {
+      padding: 2.5rem;
+      border-radius: 24px;
+      max-width: 420px;
+      width: 100%;
+    }
+
+    .elevation-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid rgba(196,164,109,0.2);
+    }
+
+    .elevation-badge {
+      display: inline-block;
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .elevation-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      color: var(--ink);
+      letter-spacing: 0.02em;
+    }
+
+    .elevation-title sup {
+      font-size: 0.6em;
+      color: var(--gold);
+    }
+
+    .elevation-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .elevation-step {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.25rem;
+      padding: 1.25rem 0;
+      position: relative;
+      opacity: 0;
+      transform: translateX(-20px);
+    }
+
+    .step-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.75rem;
+      font-weight: 300;
+      color: var(--gold);
+      line-height: 1;
+      min-width: 40px;
+    }
+
+    .step-content h4 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 0.25rem;
+      letter-spacing: 0.02em;
+    }
+
+    .step-content p {
+      font-size: 0.8rem;
+      color: var(--charcoal);
+      opacity: 0.7;
+      line-height: 1.5;
+    }
+
+    .step-line {
+      position: absolute;
+      left: 19px;
+      top: 100%;
+      width: 2px;
+      height: 20px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      opacity: 0;
+    }
+
+    .elevation-step:last-child .step-line {
+      display: none;
+    }
+
+    /* Animated pulse on step numbers */
+    .step-number::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      opacity: 0;
+    }
+
+    .step-number {
+      position: relative;
+    }
+
+    /* Animated gradient border on wrapper */
+    .elevation-wrapper {
+      position: relative;
+    }
+
+    .elevation-wrapper::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 24px;
+      padding: 2px;
+      background: linear-gradient(135deg, var(--gold), transparent 50%, var(--gold));
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      opacity: 0.3;
+    }
+
+    /* =============================================
+       CTA
+       ============================================= */
+    .cta {
+      padding: 8rem 2rem;
+    }
+
+    @media (min-width: 1024px) {
+      .cta { padding: 10rem 4rem; }
+    }
+
+    .cta-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 5rem 2rem;
+      border-radius: 30px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (min-width: 1024px) {
+      .cta-container { padding: 6rem 4rem; }
+    }
+
+    .cta-container::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 20% 20%, rgba(196,164,109,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(196,164,109,0.1) 0%, transparent 50%);
+      pointer-events: none;
+    }
+
+    .cta h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 300;
+      color: var(--ink);
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+
+    .cta p {
+      font-size: 1.0625rem;
+      color: var(--charcoal);
+      opacity: 0.8;
+      max-width: 500px;
+      margin: 0 auto 2.5rem;
+      line-height: 1.8;
+      position: relative;
+    }
+
+    .cta-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      position: relative;
+    }
+
+    /* =============================================
+       FOOTER
+       ============================================= */
+    .footer {
+      background: var(--ink);
+      color: var(--white);
+      padding: 5rem 2rem 3rem;
+      position: relative;
+    }
+
+    @media (min-width: 1024px) {
+      .footer { padding: 6rem 4rem 3rem; }
+    }
+
+    .footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 10%;
+      right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.5;
+    }
+
+    .footer-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      gap: 3rem;
+    }
+
+    @media (min-width: 768px) {
+      .footer-grid {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        gap: 4rem;
+      }
+    }
+
+    .footer-brand h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+    }
+
+    .footer-brand p {
+      font-size: 0.875rem;
+      opacity: 0.5;
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-col h4 {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-col a {
+      font-size: 0.875rem;
+      color: var(--white);
+      text-decoration: none;
+      opacity: 0.6;
+      transition: all 0.3s;
+    }
+
+    .footer-col a:hover {
+      opacity: 1;
+      color: var(--gold-light);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 3rem;
+      margin-top: 4rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    @media (min-width: 768px) {
+      .footer-bottom {
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+
+    .footer-copy {
+      font-size: 0.75rem;
+      opacity: 0.4;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .footer-socials a {
+      width: 40px;
+      height: 40px;
+      border: 1px solid rgba(201,169,98,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      transition: all 0.3s;
+    }
+
+    .footer-socials a:hover {
+      background: var(--gold);
+      border-color: var(--gold);
+    }
+
+    .footer-socials svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* =============================================
+       ANIMATIONS
+       ============================================= */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+  </style>
+</head>
+<body>
+
+  <!-- Marble Background -->
+  <div class="marble-bg"></div>
+
+  <!-- Navigation -->
+  <nav class="nav glass">
+    <a href="#" class="nav-logo">NeoLux Medical</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#philosophy">Philosophy</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book Now</a>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge glass-gold">
+        Dubai & London
+      </div>
+      <h1 class="hero-title">
+        <span class="line"><span class="word">The</span> <span class="word">art</span> <span class="word">of</span></span>
+        <span class="line"><span class="word"><em>living</em></span> <span class="word"><em>longer</em></span></span>
+      </h1>
+      <p class="hero-sub">
+        Evidence-based longevity protocols for executives who demand measurable outcomes. Personalised care under Dr Shabeena Aziz in Dubai and London.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-gold">Book Consultation</a>
+        <a href="#about" class="btn-outline">Learn More</a>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- Stats Bar -->
+  <section class="stats-bar">
+    <div class="stats-container glass">
+      <div class="stat-item reveal">
+        <div class="stat-value"><span class="counter" data-target="20">0</span>+</div>
+        <div class="stat-label">Years Clinical Experience</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-value">UK & UAE</div>
+        <div class="stat-label">Dual Practice</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-value">DHA</div>
+        <div class="stat-label">Licensed</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Intro -->
+  <section class="intro" id="about">
+    <div class="intro-grid">
+      <div class="intro-visual reveal">
+        <div class="intro-image-wrap">
+          <img src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=800&q=85" alt="Golden light">
+        </div>
+        <div class="intro-accent glass">
+          <p class="intro-accent-label">Our Approach</p>
+          <p class="intro-accent-text">Aging is measurable. Healthspan is modifiable.</p>
+        </div>
+      </div>
+      <div class="intro-content">
+        <p class="section-label reveal">The NeoLux Difference</p>
+        <h2 class="reveal reveal-delay-1">Healthcare that adapts with you and supports your <em>evolution</em></h2>
+        <p class="intro-text reveal reveal-delay-2">
+          NeoLux Medical exists at the intersection of translational geroscience and clinical medicine. We don't treat disease—we prevent it.
+        </p>
+        <p class="intro-text reveal reveal-delay-2">
+          Through advanced diagnostics, evidence-based interventions, and continuous optimisation, we help you understand your vulnerabilities before they become limitations—translating complex biomarkers into actionable protocols.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Doctor -->
+  <section class="doctor">
+    <div class="doctor-container glass-dark">
+      <div class="doctor-grid">
+        <div class="doctor-image reveal">
+          <img src="images/shabeena-aziz.jpg" alt="Dr. Shabeena Aziz">
+          <div class="doctor-image-frame"></div>
+        </div>
+        <div class="doctor-content">
+          <p class="doctor-label reveal">Your Physician</p>
+          <h2 class="doctor-name reveal reveal-delay-1">Dr Shabeena Aziz</h2>
+          <p class="doctor-credentials reveal reveal-delay-1">MBChB (Hons), MRCGP, MSc Sports & Exercise Medicine</p>
+          <p class="doctor-bio reveal reveal-delay-2">
+            Dr Aziz brings over two decades of clinical experience spanning primary care in Chelsea, humanitarian medicine abroad, and specialised longevity practice. Her unique approach integrates Family Medicine, Longevity Medicine, and Sports Medicine—informed by both rigorous medical training and personal commitment to physical optimisation.
+          </p>
+          <p class="doctor-bio reveal reveal-delay-2" style="margin-top: 1rem;">
+            A personal catalyst—her father's stroke—deepened her commitment to early detection and preventative intervention. Today, she helps executives understand their vulnerabilities before they become limitations.
+          </p>
+          <div class="doctor-stats reveal reveal-delay-3">
+            <div class="doctor-stat">
+              <div class="doctor-stat-value">20+</div>
+              <div class="doctor-stat-label">Years Experience</div>
+            </div>
+            <div class="doctor-stat">
+              <div class="doctor-stat-value">UK & UAE</div>
+              <div class="doctor-stat-label">Dual Practice</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Services -->
+  <section class="services" id="services">
+    <div class="services-inner">
+      <div class="services-header">
+        <p class="section-label reveal">What We Offer</p>
+        <h2 class="reveal reveal-delay-1">Comprehensive longevity <em>protocols</em></h2>
+        <p class="reveal reveal-delay-2">Evidence-based interventions tailored to your biology and goals.</p>
+      </div>
+      <div class="services-grid" id="servicesGrid">
+        <div class="service-card glass">
+          <div class="service-num">01</div>
+          <h3>Foundation Assessment</h3>
+          <p>A comprehensive baseline analysis for those ready to understand their body's true potential. No symptoms required — designed for high performers seeking clarity on current health status and optimisation opportunities.</p>
+          <span class="service-arrow">&rarr;</span>
+        </div>
+        <div class="service-card glass">
+          <div class="service-num">02</div>
+          <h3>Optimisation Protocol</h3>
+          <p>A structured medical programme delivering deep scientific analysis of your health architecture. Biomarkers, hormonal profile, metabolic function, and recovery capacity — assessed with precision and translated into actionable interventions.</p>
+          <span class="service-arrow">&rarr;</span>
+        </div>
+        <div class="service-card glass">
+          <div class="service-num">03</div>
+          <h3>Advanced Protocol</h3>
+          <p>Ongoing clinical partnership with quarterly reviews, continuous biomarker monitoring, and adaptive protocol refinement. For those committed to sustained optimisation with direct physician access.</p>
+          <span class="service-arrow">&rarr;</span>
+        </div>
+        <div class="service-card glass">
+          <div class="service-num">04</div>
+          <h3>Advanced+ Concierge</h3>
+          <p>The complete longevity partnership. Annual comprehensive assessment, priority access, unlimited consultations, and fully integrated care coordination across both Dubai and London practices.</p>
+          <span class="service-arrow">&rarr;</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Philosophy -->
+  <section class="philosophy" id="philosophy">
+    <div class="philosophy-grid">
+      <div class="philosophy-content">
+        <p class="section-label reveal">Our Philosophy</p>
+        <h2 class="reveal reveal-delay-1">Designed to extend years lived in strength, clarity, and <em>vitality</em></h2>
+        <p class="philosophy-text reveal reveal-delay-2">
+          Healthy aging is not a single intervention. It is a continuous, evidence-based process that preserves function, independence, and quality of life. NeoLux integrates clinical care, lifestyle medicine, and advanced diagnostics into a unified model.
+        </p>
+      </div>
+      <div class="philosophy-visual reveal">
+        <div class="elevation-wrapper glass">
+          <div class="elevation-header">
+            <span class="elevation-badge">The Framework</span>
+            <h3 class="elevation-title">NeoLux Elevation Method<sup>™</sup></h3>
+          </div>
+          <div class="elevation-steps" id="elevationSteps">
+            <div class="elevation-step" data-step="1">
+              <div class="step-number">01</div>
+              <div class="step-content">
+                <h4>Assess</h4>
+                <p>Deep diagnostics, DNA analysis, biomarkers, cognitive and mental health screening</p>
+              </div>
+              <div class="step-line"></div>
+            </div>
+            <div class="elevation-step" data-step="2">
+              <div class="step-number">02</div>
+              <div class="step-content">
+                <h4>Align</h4>
+                <p>Hormone balancing, peptides, sleep protocols, psychological optimisation</p>
+              </div>
+              <div class="step-line"></div>
+            </div>
+            <div class="elevation-step" data-step="3">
+              <div class="step-number">03</div>
+              <div class="step-content">
+                <h4>Advance</h4>
+                <p>Regenerative therapies, performance medicine, metabolic correction</p>
+              </div>
+              <div class="step-line"></div>
+            </div>
+            <div class="elevation-step" data-step="4">
+              <div class="step-number">04</div>
+              <div class="step-content">
+                <h4>Ascend</h4>
+                <p>Long-term optimisation and mental resilience conditioning</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta" id="contact">
+    <div class="cta-container glass">
+      <h2 class="reveal">Begin Your Assessment</h2>
+      <p class="reveal reveal-delay-1">
+        Take the first step toward understanding your body's true potential. Schedule a consultation with Dr Aziz.
+      </p>
+      <p class="reveal reveal-delay-1" style="font-size: 0.875rem; opacity: 0.6; margin-top: 0.5rem;">
+        Consultations available in Dubai and London. Discretion assured.
+      </p>
+      <div class="cta-buttons reveal reveal-delay-2">
+        <a href="mailto:concierge@neoluxhealth.com" class="btn-gold">Book Consultation</a>
+        <a href="https://wa.me/971585857688" class="btn-outline">Contact Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>NeoLux Medical</h3>
+        <p>Precision longevity medicine, led by Dr. Shabeena Aziz. Serving discerning patients in Dubai and London.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#services">Foundation Assessment</a></li>
+          <li><a href="#services">Optimisation Protocol</a></li>
+          <li><a href="#services">Advanced Protocol</a></li>
+          <li><a href="#services">Advanced+ Concierge</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#philosophy">Philosophy</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="mailto:concierge@neoluxhealth.com">concierge@neoluxhealth.com</a></li>
+          <li><a href="tel:+971585857688">+971 58 585 7688</a></li>
+          <li><a href="#">Dubai, UAE</a></li>
+          <li><a href="#">London, UK</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">© 2025 NeoLux Medical. All rights reserved.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/dr_shabeena_aziz/" aria-label="Instagram">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>
+        <a href="https://www.threads.com/@dr_shabeena_aziz" aria-label="Threads">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.96-.065-1.182.408-2.256 1.33-3.022.88-.73 2.088-1.146 3.6-1.242 1.02-.064 1.973-.02 2.854.136l.019-.142c-.022-1.237-.235-2.162-.652-2.828-.453-.724-1.166-1.078-2.182-1.086h-.032c-.834.006-1.63.27-2.438.81l-1.095-1.726c1.097-.732 2.376-1.103 3.55-1.103h.046c1.584.02 2.81.614 3.645 1.77.735 1.017 1.107 2.39 1.107 4.085v.091c1.082.476 1.96 1.2 2.533 2.147.738 1.215.94 2.793.551 4.322-.538 2.11-1.839 3.744-3.76 4.728-1.472.755-3.206 1.136-5.156 1.136zm-1.478-6.03c-.053.973.36 1.533.786 1.81.507.328 1.196.454 1.867.417 1.074-.058 1.873-.439 2.443-1.166.517-.659.87-1.593.946-2.801l-.265-.04c-.736-.102-1.537-.126-2.383-.072-1.087.068-1.95.334-2.499.77-.475.376-.865.85-.895 1.082z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/dr-shabeena-aziz" aria-label="LinkedIn">
+          <svg fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module">
+    import { animate, inView, stagger, scroll } from "https://cdn.jsdelivr.net/npm/motion@11.13.5/+esm";
+
+    // =============================================
+    // HERO TEXT REVEAL (Motion.dev)
+    // =============================================
+    window.addEventListener('load', () => {
+      // Staggered word reveal with spring physics
+      animate('.hero-title .word',
+        { y: ['100%', '0%'], opacity: [0, 1] },
+        {
+          delay: stagger(0.12),
+          duration: 0.9,
+          easing: [0.16, 1, 0.3, 1]
+        }
+      );
+    });
+
+    // =============================================
+    // SCROLL PARALLAX (Motion.dev)
+    // =============================================
+    const hero = document.querySelector('.hero');
+
+    // Orb 1 - moves down on scroll
+    scroll(
+      animate('.hero-orb-1', { y: [0, 150] }),
+      { target: hero, offset: ['start start', 'end start'] }
+    );
+
+    // Orb 2 - moves up on scroll (opposite direction)
+    scroll(
+      animate('.hero-orb-2', { y: [0, -100] }),
+      { target: hero, offset: ['start start', 'end start'] }
+    );
+
+    // =============================================
+    // STAGGERED SERVICE CARDS (Motion.dev)
+    // =============================================
+    inView('#servicesGrid', () => {
+      animate('.service-card',
+        { y: [40, 0], opacity: [0, 1] },
+        {
+          delay: stagger(0.08),
+          duration: 0.7,
+          easing: [0.16, 1, 0.3, 1]
+        }
+      );
+    }, { margin: '-100px' });
+
+    // =============================================
+    // ENHANCED HOVER INTERACTIONS (Motion.dev)
+    // =============================================
+    document.querySelectorAll('.service-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        animate(card,
+          { y: -12, boxShadow: '0 25px 60px rgba(0,0,0,0.12)' },
+          { duration: 0.4, easing: [0.16, 1, 0.3, 1] }
+        );
+      });
+
+      card.addEventListener('mouseleave', () => {
+        animate(card,
+          { y: 0, boxShadow: '0 8px 32px rgba(0,0,0,0.08)' },
+          { duration: 0.4, easing: [0.16, 1, 0.3, 1] }
+        );
+      });
+    });
+
+    // =============================================
+    // ELEVATION METHOD (Motion.dev)
+    // =============================================
+    inView('#elevationSteps', () => {
+      // Animate each step with stagger
+      document.querySelectorAll('.elevation-step').forEach((step, i) => {
+        animate(step,
+          { opacity: [0, 1], x: [-20, 0] },
+          { duration: 0.6, delay: i * 0.2, easing: [0.16, 1, 0.3, 1] }
+        );
+
+        // Animate connecting lines
+        const line = step.querySelector('.step-line');
+        if (line) {
+          animate(line,
+            { opacity: [0, 0.6], height: ['0px', '20px'] },
+            { duration: 0.4, delay: 0.4 + (i * 0.2), easing: [0.16, 1, 0.3, 1] }
+          );
+        }
+
+        // Continuous pulse on step numbers
+        const num = step.querySelector('.step-number');
+        if (num) {
+          animate(num,
+            { scale: [1, 1.05, 1] },
+            { duration: 3, delay: i * 0.5, repeat: Infinity, easing: 'ease-in-out' }
+          );
+        }
+      });
+
+      // Animate wrapper border
+      const wrapper = document.querySelector('.elevation-wrapper');
+      if (wrapper) {
+        animate(wrapper,
+          { '--border-angle': ['0deg', '360deg'] },
+          { duration: 8, repeat: Infinity, easing: 'linear' }
+        );
+      }
+    }, { margin: '-100px' });
+
+    // Continuous data flow animation on step lines
+    document.querySelectorAll('.step-line').forEach((line, i) => {
+      animate(line,
+        { opacity: [0.3, 0.7, 0.3] },
+        { duration: 2, delay: i * 0.3, repeat: Infinity, easing: 'ease-in-out' }
+      );
+    });
+
+    // =============================================
+    // COUNTER ANIMATION (Motion.dev)
+    // =============================================
+    inView('.counter', ({ target }) => {
+      const end = parseInt(target.dataset.target);
+      animate(0, end, {
+        duration: 1.5,
+        easing: [0.16, 1, 0.3, 1],
+        onUpdate: v => target.textContent = Math.round(v)
+      });
+    }, { margin: '-50px' });
+
+    // =============================================
+    // AMBIENT MOVEMENT (Motion.dev)
+    // =============================================
+    // Subtle float on stat items
+    document.querySelectorAll('.stat-item').forEach((item, i) => {
+      animate(item,
+        { y: [0, -5, 0] },
+        { duration: 4 + (i * 0.5), delay: i * 0.3, repeat: Infinity, easing: 'ease-in-out' }
+      );
+    });
+
+    // Service card gold accent pulse
+    document.querySelectorAll('.service-card').forEach((card, i) => {
+      const num = card.querySelector('.service-num');
+      if (num) {
+        animate(num,
+          { opacity: [0.3, 0.5, 0.3] },
+          { duration: 3, delay: i * 0.4, repeat: Infinity, easing: 'ease-in-out' }
+        );
+      }
+    });
+
+    // Hero badge subtle pulse
+    const heroBadge = document.querySelector('.hero-badge');
+    if (heroBadge) {
+      animate(heroBadge,
+        { scale: [1, 1.02, 1] },
+        { duration: 4, repeat: Infinity, easing: 'ease-in-out' }
+      );
+    }
+
+    // =============================================
+    // SCROLL REVEAL (CSS-based, kept simple)
+    // =============================================
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '-50px' });
+
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    // Trigger reveals already in viewport on load
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.reveal').forEach((el, i) => {
+        if (el.getBoundingClientRect().top < window.innerHeight) {
+          setTimeout(() => el.classList.add('in-view'), i * 80);
+        }
+      });
+
+    });
+  </script>
+</body>
+</html>
